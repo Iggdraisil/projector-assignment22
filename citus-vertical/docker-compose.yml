@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  citus_master:
+    image: citusdata/citus:11.3
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: book
+      CITUS_MASTER: "true"
+    volumes:
+      - coordinator_data:/var/lib/postgresql/data
+
+volumes:
+  coordinator_data:
